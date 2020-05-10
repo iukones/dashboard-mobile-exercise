@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+}
+.wrapper {
+  padding: 0 30px;
+}
+.card {
+  border-top: 1px solid blue;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #f0f3fa;
+}
+.card::before {
+  content: "";
+  height: 4px;
+  display: block;
+  background-color: blueviolet;
+  
+}
