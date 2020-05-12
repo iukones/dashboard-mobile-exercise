@@ -1,8 +1,8 @@
 :root {
   --lime-green: hsl(163, 72%, 41%);
   --bright-red: hsl(356, 69%, 56%);
-  --facebook: hsl(208, 92%, 53%);
-  --twitter: hsl(203, 89%, 53%);
+  --facebook: hsl(214, 58%, 50%);
+  --twitter: hsl(209, 86%, 61%);
   --instagram-1: hsl(37, 97%, 70%);
   --instagram-2: hsl(329, 70%, 58%);
   --youTube: hsl(348, 97%, 39%);
@@ -171,11 +171,23 @@ h2 {
 /* Responsive */
  @media screen and (min-width: 480px) {
   .grid {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-column-gap: 25px;
   }
   .wrapper {
     max-width: 1240px;
     margin: 0 auto;
+  }
+ }
+
+ @media screen and (min-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+ }
+
+ @media screen and (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
  }
