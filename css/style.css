@@ -7,11 +7,15 @@
   --instagram-2: hsl(329, 70%, 58%);
   --youTube: hsl(348, 97%, 39%);
   --dark-grayish-text: hsl(228, 12%, 44%);
+  --whiteHeader: hsl(230, 75%, 98%);
+  --whiteCard: hsl(222, 50%, 96%);
+  --principalText: hsl(225, 17%, 14%);
 }
 * {
   box-sizing: border-box;
 }
 body {
+  color: var(--principalText);
   font-family: 'Inter', sans-serif;
   margin: 0;
 }
@@ -23,7 +27,7 @@ body {
   grid-row-gap: 25px;
 }
 .header {
-  background-color: #f8f9fe;
+  background-color: var(--whiteHeader);
   padding-bottom: 100px;
   border-radius: 0 0 20px 20px;
   padding-top: 2em;
@@ -36,8 +40,36 @@ body {
   color: var(--dark-grayish-text);
   margin: .5em 0;
   font-weight: bold;
-  border-bottom: 1.3px solid var(--dark-grayish-text);
+  border-bottom: 1px solid var(--dark-grayish-text);
   padding-bottom: 1.5em;
+}
+.checkbox {
+  display: none;
+}
+.checkbox:checked ~ .toggle:before {
+  transform: translate(0);
+}
+.toggle {
+  width: 80px;
+  height: 40px;
+  display: block;
+  border-radius: 50px;
+  background-color: var(--whiteCard);
+  padding: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: none;
+}
+.toggle::before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--dark-grayish-text);
+  transform: translate(40px);
+  transition: .3s;
+  will-change: transform;
 }
 .top-cards {
   margin-top: -50px;
@@ -47,7 +79,7 @@ body {
 .card {
   border-radius: 8px;
   overflow: hidden;
-  background-color: #f0f3fa;
+  background-color: var(--whiteCard);
   text-align: center;
   padding: 1.7em 0;
   position: relative;
@@ -85,11 +117,8 @@ body {
 .card-title img {
   margin-right: 5px;
 }
-.card-followers {
-  /* border: 1px solid green; */
-}
+
 .card-followers-number {
-  /* border: 1px solid red; */
   font-size: 3em;
   font-weight: bold;
 }
@@ -122,29 +151,25 @@ h2 {
   color: var(--dark-grayish-text);
 }
 .card-small {
-  
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-row-gap: 1em;
   border-radius: 8px;
-  background-color: #f0f3fa;
+  background-color: var(--whiteCard);
   padding: 1.7em;
 }
 .card-small p {
   margin: 0;
 }
 .card-small-views {
-  
   font-size: .9em;
   font-weight: bold;
   color: var(--dark-grayish-text);
 }
 .card-small-icon {
-  
   text-align: right;
 }
 .card-small-number {
-  
   font-size: 2.7em;
   font-weight: bold;
   line-height: .9;
@@ -189,5 +214,29 @@ h2 {
  @media screen and (min-width: 1024px) {
   .grid {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+ }
+
+ /* Dark mode */
+ @media screen and (prefers-color-scheme: dark) {
+
+   :root {
+     /* Dark Theme */
+    --dark-grayish-text:hsl(228, 34%, 66%);
+    --whiteHeader: hsl(232, 19%, 15%);
+    --whiteCard: hsl(228, 28%, 20%);
+    --principalText:  hsl(0, 0%, 100%);
+    --veryDarkBlueBG: hsl(230, 17%, 14%);
+  }
+  body {
+    background-color: var(--veryDarkBlueBG);
+    color: var(--principalText);
+  }
+  img {
+    opacity: .75;
+    transition: opacity .5s ease-in-out;
+  }
+  img:hover {
+    opacity: 1;
   }
  }
