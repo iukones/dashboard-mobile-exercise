@@ -10,11 +10,17 @@
   --whiteHeader: hsl(230, 75%, 98%);
   --whiteCard: hsl(222, 50%, 96%);
   --principalText: hsl(225, 17%, 14%);
+  --card-box-shadow-1: rgba(0,0,0,.1);
+  --card-box-shadow-2: rgba(0,0,0,.05);
+  --veryDarkBlueBG: hsl(0, 0%, 100%);
+  --toggleBG: hsl(222, 50%, 96%);
+  --toggleCircleBG: hsl(228, 12%, 44%);
 }
 * {
   box-sizing: border-box;
 }
 body {
+  background-color: var(--veryDarkBlueBG);
   color: var(--principalText);
   font-family: 'Inter', sans-serif;
   margin: 0;
@@ -26,11 +32,17 @@ body {
   display: grid;
   grid-row-gap: 25px;
 }
+.dark-mode {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1em;
+}
 .header {
   background-color: var(--whiteHeader);
   padding-bottom: 100px;
   border-radius: 0 0 20px 20px;
   padding-top: 2em;
+  box-shadow: 0 10px 15px -3px var(--card-box-shadow-1),0 4px 6px -2px var(--card-box-shadow-2);
 }
 .header h1 {
   margin: 0;
@@ -54,11 +66,12 @@ body {
   height: 40px;
   display: block;
   border-radius: 50px;
-  background-color: var(--whiteCard);
+  background: var(--toggleBG);
   padding: 5px;
   box-sizing: border-box;
   cursor: pointer;
   user-select: none;
+  box-shadow: 0 10px 15px -3px var(--card-box-shadow-1),0 4px 6px -2px var(--card-box-shadow-2);
 }
 .toggle::before {
   content: "";
@@ -66,10 +79,11 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: var(--dark-grayish-text);
+  background-color: var(--toggleCircleBG);
   transform: translate(40px);
   transition: .3s;
   will-change: transform;
+  box-shadow: 0 10px 15px -3px var(--card-box-shadow-1),0 4px 6px -2px var(--card-box-shadow-2);
 }
 .top-cards {
   margin-top: -50px;
@@ -83,6 +97,7 @@ body {
   text-align: center;
   padding: 1.7em 0;
   position: relative;
+  box-shadow: 0 10px 15px -3px var(--card-box-shadow-1),0 4px 6px -2px var(--card-box-shadow-2);
 }
 .card::before {
   content: "";
@@ -157,6 +172,7 @@ h2 {
   border-radius: 8px;
   background-color: var(--whiteCard);
   padding: 1.7em;
+  box-shadow: 0 10px 15px -3px var(--card-box-shadow-1),0 4px 6px -2px var(--card-box-shadow-2);
 }
 .card-small p {
   margin: 0;
@@ -209,34 +225,62 @@ h2 {
   .grid {
     grid-template-columns: 1fr 1fr 1fr;
   }
+  .header-total {
+    border: none;
+  }
+  .header-grid {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+  }
  }
 
  @media screen and (min-width: 1024px) {
   .grid {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
+  
+ }
+
+ /* Light mode */
+ .is-light-mode {
+  --dark-grayish-text: hsl(228, 12%, 44%);
+  --whiteHeader: hsl(230, 75%, 98%);
+  --whiteCard: hsl(222, 50%, 96%);
+  --principalText: hsl(225, 17%, 14%);
+  --card-box-shadow-1: rgba(0,0,0,.1);
+  --card-box-shadow-2: rgba(0,0,0,.05);
+  --veryDarkBlueBG: hsl(0, 0%, 100%);
+  --toggleBG: hsl(222, 50%, 96%);
+  --toggleCircleBG: hsl(228, 12%, 44%);
+  transition: .1s ease-in-out;
  }
 
  /* Dark mode */
- @media screen and (prefers-color-scheme: dark) {
+ .is-dark-mode {
+  --dark-grayish-text:hsl(228, 34%, 66%);
+  --whiteHeader: hsl(232, 19%, 15%);
+  --whiteCard: hsl(228, 28%, 20%);
+  --principalText:  hsl(0, 0%, 100%);
+  --veryDarkBlueBG: hsl(230, 17%, 14%);
+  --togglebg-1: hsl(210, 78%, 56%);
+  --togglebg-2: hsl(146, 68%, 55%);
+  --toggleBG: linear-gradient(to right, var(--togglebg-1), var(--togglebg-2));
+  --toggleCircleBG:hsl(0, 0%, 100%);
+  transition: .1s ease-in-out;
+ }
+ @media (prefers-color-scheme: dark) {
 
    :root {
      /* Dark Theme */
-    --dark-grayish-text:hsl(228, 34%, 66%);
-    --whiteHeader: hsl(232, 19%, 15%);
-    --whiteCard: hsl(228, 28%, 20%);
-    --principalText:  hsl(0, 0%, 100%);
-    --veryDarkBlueBG: hsl(230, 17%, 14%);
+     --dark-grayish-text:hsl(228, 34%, 66%);
+     --whiteHeader: hsl(232, 19%, 15%);
+     --whiteCard: hsl(228, 28%, 20%);
+     --principalText:  hsl(0, 0%, 100%);
+     --veryDarkBlueBG: hsl(230, 17%, 14%);
+     --togglebg-1: hsl(210, 78%, 56%);
+     --togglebg-2: hsl(146, 68%, 55%);
+     --toggleBG: linear-gradient(to right, var(--togglebg-1), var(--togglebg-2));
+     --toggleCircleBG:hsl(0, 0%, 100%);
   }
-  body {
-    background-color: var(--veryDarkBlueBG);
-    color: var(--principalText);
-  }
-  img {
-    opacity: .75;
-    transition: opacity .5s ease-in-out;
-  }
-  img:hover {
-    opacity: 1;
-  }
+  
  }
